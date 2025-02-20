@@ -14,6 +14,12 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        resValue(
+            "string",
+            "mapbox_access_token",
+            providers.gradleProperty("MAPBOX_PUBLIC_TOKEN").get()
+        )
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
