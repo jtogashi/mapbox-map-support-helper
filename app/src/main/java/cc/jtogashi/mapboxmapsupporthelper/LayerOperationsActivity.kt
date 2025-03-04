@@ -7,10 +7,10 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import cc.jtogashi.mapboxmapsupporthelper.databinding.ActivityMainBinding
+import cc.jtogashi.mapboxmapsupporthelper.databinding.ActivityLayerOperationsBinding
 import com.google.gson.JsonObject
+import com.mapbox.annotation.MapboxExperimental
 import com.mapbox.geojson.Feature
-import com.mapbox.geojson.Point
 import com.mapbox.maps.CameraOptions
 import com.mapbox.maps.LongClickInteraction
 import com.mapbox.maps.Style
@@ -38,19 +38,20 @@ private const val PROPERTY_COLOR_R = "color-r"
 private const val PROPERTY_COLOR_G = "color-g"
 private const val PROPERTY_COLOR_B = "color-b"
 
-class MainActivity : AppCompatActivity() {
+@MapboxExperimental
+class LayerOperationsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        val binding = ActivityMainBinding.inflate(layoutInflater).apply {
-            mapMain.debugOptions = setOf(
+        val binding = ActivityLayerOperationsBinding.inflate(layoutInflater).apply {
+            mapLayerOperations.debugOptions = setOf(
                 MapViewDebugOptions.COLLISION,
                 MapViewDebugOptions.TILE_BORDERS
             )
 
-            mapMain.mapboxMap.apply {
+            mapLayerOperations.mapboxMap.apply {
                 setCamera(
                     CameraOptions.Builder()
                         .center(DefinedLocation.TOKYO_TOWER)
@@ -71,7 +72,10 @@ class MainActivity : AppCompatActivity() {
                     style(style = Style.LIGHT) {
                         +image(
                             IMAGE_ID,
-                            ContextCompat.getDrawable(this@MainActivity, R.drawable.marker)!!.toBitmap()
+                            ContextCompat.getDrawable(
+                                this@LayerOperationsActivity,
+                                R.drawable.marker
+                            )!!.toBitmap()
                         ) {
                             sdf(true)
                         }
@@ -126,7 +130,7 @@ class MainActivity : AppCompatActivity() {
         }
         setContentView(binding.root)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.layerOperations)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
