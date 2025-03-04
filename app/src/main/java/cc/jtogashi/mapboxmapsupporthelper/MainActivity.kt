@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
             mapMain.mapboxMap.apply {
                 setCamera(
                     CameraOptions.Builder()
-                        .center(Point.fromLngLat(139.7455, 35.6585))
+                        .center(DefinedLocation.TOKYO_TOWER)
                         .zoom(16.5)
                         .build()
                 )
@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
                             )
                             iconSize(4.0)
                             iconAllowOverlap(true)
-                            iconAnchor(IconAnchor.BOTTOM)
+                            iconAnchor(IconAnchor.RIGHT)
                             iconColor(
                                 rgb(get(PROPERTY_COLOR_R), get(PROPERTY_COLOR_G), get(PROPERTY_COLOR_B))
                             )
@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity() {
                             textColor(
                                 rgb(get(PROPERTY_COLOR_R), get(PROPERTY_COLOR_G), get(PROPERTY_COLOR_B))
                             )
-                            textAnchor(TextAnchor.TOP)
+                            textAnchor(TextAnchor.LEFT)
                             textAllowOverlap(false)
                             textOptional(true)
                         }

@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.gms.location)
 
     implementation(libs.mapbox.maps)
+    implementation(libs.mapbox.java)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
