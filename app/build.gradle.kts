@@ -54,6 +54,8 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.work)
 
+    implementation(libs.kotlinx.coroutine)
+
     implementation(libs.gms.location)
 
     implementation(libs.mapbox.maps)

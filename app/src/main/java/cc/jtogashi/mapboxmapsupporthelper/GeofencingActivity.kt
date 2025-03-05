@@ -8,7 +8,9 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import cc.jtogashi.mapboxmapsupporthelper.databinding.ActivityGeofencingBinding
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.JsonObject
 import com.mapbox.annotation.MapboxExperimental
 import com.mapbox.common.geofencing.GeofencingError
@@ -33,20 +35,24 @@ import com.mapbox.maps.plugin.locationcomponent.createDefault2DPuck
 import com.mapbox.maps.plugin.locationcomponent.location
 import com.mapbox.turf.TurfConstants
 import com.mapbox.turf.TurfTransformation
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 @MapboxExperimental
-class GeofencingActivity : AppCompatActivity() {
+class GeofencingActivity : AppCompatActivity(), GeofencingObserver {
 
     private val geofencingService by lazy {
         GeofencingFactory.getOrCreate()
     }
 
+    private lateinit var binding: ActivityGeofencingBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        val binding = ActivityGeofencingBinding.inflate(layoutInflater).apply {
+        binding = ActivityGeofencingBinding.inflate(layoutInflater).apply {
             mapGeofencing.apply {
                 location.enabled = true
                 location.locationPuck = createDefault2DPuck()
@@ -129,6 +135,14 @@ class GeofencingActivity : AppCompatActivity() {
         }
     }
 
+    override fun onPause() {
+        geofencingService.removeObserver(this) {
+            // NOP
+        }
+
+        super.onPause()
+    }
+
     private fun addGeofencingFeatures() {
         geofencingCircles.forEach { circle ->
             geofencingService.addFeature(circle) {
@@ -147,6 +161,10 @@ class GeofencingActivity : AppCompatActivity() {
         geofencingService.addObserver(PoiGeofencingObserver) {
             // NOP
         }
+        geofencingService.addObserver(this) {
+            // NOP
+        }
+
         addGeofencingFeatures()
     }
 
@@ -154,7 +172,37 @@ class GeofencingActivity : AppCompatActivity() {
         geofencingService.removeObserver(PoiGeofencingObserver) {
             // NOP
         }
+        geofencingService.removeObserver(this) {
+            // NOP
+        }
+
         clearGeofencingFeatures()
+    }
+
+    override fun onEntry(event: GeofencingEvent) {
+        snackbarOnUiThread("entry to ${event.feature.getProperty(PROPERTY_NAME)}")
+    }
+
+    override fun onDwell(event: GeofencingEvent) {
+        snackbarOnUiThread("dwell in ${event.feature.getProperty(PROPERTY_NAME)}")
+    }
+
+    override fun onExit(event: GeofencingEvent) {
+        snackbarOnUiThread("exit from ${event.feature.getProperty(PROPERTY_NAME)}")
+    }
+
+    override fun onUserConsentChanged(isConsentGiven: Boolean) {
+        snackbarOnUiThread("user consent changed to $isConsentGiven")
+    }
+
+    override fun onError(error: GeofencingError) {
+        snackbarOnUiThread("error: ${error.message}")
+    }
+
+    private fun snackbarOnUiThread(message: CharSequence) {
+        lifecycleScope.launch(Dispatchers.Main) {
+            Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+        }
     }
 
     private object PoiGeofencingObserver: GeofencingObserver {
@@ -163,11 +211,17 @@ class GeofencingActivity : AppCompatActivity() {
         }
 
         override fun onDwell(event: GeofencingEvent) {
-            Log.i(LOG_TAG, "dwell ${event.feature.getProperty(PROPERTY_NAME)} on ${event.timestamp}")
+            Log.i(
+                LOG_TAG,
+                "dwell in ${event.feature.getProperty(PROPERTY_NAME)} on ${event.timestamp}"
+            )
         }
 
         override fun onExit(event: GeofencingEvent) {
-            Log.i(LOG_TAG, "exit ${event.feature.getProperty(PROPERTY_NAME)} on ${event.timestamp}")
+            Log.i(
+                LOG_TAG,
+                "exit from ${event.feature.getProperty(PROPERTY_NAME)} on ${event.timestamp}"
+            )
         }
 
         override fun onUserConsentChanged(isConsentGiven: Boolean) {
