@@ -18,6 +18,8 @@ gmsLocation = "21.3.0"
 mapboxMaps = "11.10.0"
 mapboxJava = "7.3.1"
 
+okHttp = "4.12.0"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -34,7 +36,10 @@ kotlinx-coroutine = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutine
 gms-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "gmsLocation" }
 
 mapbox-maps = { group = "com.mapbox.maps", name = "android", version.ref = "mapboxMaps" }
-mapbox-java = { group = "com.mapbox.mapboxsdk", name = "mapbox-sdk-turf", version.ref = "mapboxJava" }
+mapbox-java-turf = { group = "com.mapbox.mapboxsdk", name = "mapbox-sdk-turf", version.ref = "mapboxJava" }
+mapbox-java-services = { group = "com.mapbox.mapboxsdk", name = "mapbox-sdk-services", version.ref = "mapboxJava" }
+
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okHttp" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

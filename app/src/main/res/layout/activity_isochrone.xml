@@ -6,15 +6,62 @@
     android:id="@+id/isochrone"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="12dp"
     tools:context=".IsochroneActivity">
 
     <com.mapbox.maps.MapView
         android:id="@+id/mapIsochrone"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@id/editMinute"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerProfile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        app:layout_constraintTop_toBottomOf="@id/mapIsochrone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/editMinute"
+        app:layout_constraintBaseline_toBaselineOf="@id/editMinute" />
+
+    <EditText
+        android:id="@+id/editMinute"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:maxLines="1"
+        android:layout_marginStart="12dp"
+        app:layout_constraintTop_toBottomOf="@id/mapIsochrone"
+        app:layout_constraintStart_toEndOf="@id/spinnerProfile"
+        app:layout_constraintEnd_toStartOf="@id/textMinute"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textMinute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="min"
+        android:textSize="14sp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/editMinute"
+        app:layout_constraintStart_toEndOf="@id/editMinute"
+        app:layout_constraintEnd_toStartOf="@id/buttonIsochrone" />
+
+    <Button
+        android:id="@+id/buttonIsochrone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Isochrone"
+        android:textSize="16sp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/editMinute"
+        app:layout_constraintStart_toEndOf="@id/textMinute"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

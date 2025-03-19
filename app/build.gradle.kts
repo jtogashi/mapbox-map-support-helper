@@ -59,7 +59,10 @@ dependencies {
     implementation(libs.gms.location)
 
     implementation(libs.mapbox.maps)
-    implementation(libs.mapbox.java)
+    implementation(libs.mapbox.java.turf)
+    implementation(libs.mapbox.java.services)
+
+    implementation(libs.okhttp)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
