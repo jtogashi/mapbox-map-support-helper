@@ -32,6 +32,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 class IsochroneActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityIsochroneBinding
@@ -173,7 +174,7 @@ class IsochroneActivity : AppCompatActivity() {
                         null,
                         null,
                         null
-                    ).let {
+                    ) {
                         flyTo(it)
                     }
                 }
