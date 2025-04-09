@@ -34,6 +34,9 @@
             android:name=".IsochroneActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".UserLocationActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

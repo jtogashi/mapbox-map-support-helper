@@ -11,8 +11,8 @@ import cc.jtogashi.mapboxmapsupporthelper.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private val exampleList = listOf(
         LayerOperationsActivity::class.java,
-        GeofencingActivity::class.java,
-        IsochroneActivity::class.java
+        IsochroneActivity::class.java,
+        UserLocationActivity::class.java
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
