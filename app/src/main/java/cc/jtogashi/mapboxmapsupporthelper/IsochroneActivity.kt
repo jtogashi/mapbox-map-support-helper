@@ -18,8 +18,6 @@ import com.mapbox.api.isochrone.MapboxIsochrone
 import com.mapbox.geojson.FeatureCollection
 import com.mapbox.geojson.Point
 import com.mapbox.geojson.Polygon
-import com.mapbox.maps.dsl.cameraOptions
-import com.mapbox.maps.plugin.animation.flyTo
 import com.mapbox.maps.plugin.annotation.annotations
 import com.mapbox.maps.plugin.annotation.generated.PointAnnotationManager
 import com.mapbox.maps.plugin.annotation.generated.PointAnnotationOptions
@@ -27,7 +25,6 @@ import com.mapbox.maps.plugin.annotation.generated.PolygonAnnotationManager
 import com.mapbox.maps.plugin.annotation.generated.PolygonAnnotationOptions
 import com.mapbox.maps.plugin.annotation.generated.createPointAnnotationManager
 import com.mapbox.maps.plugin.annotation.generated.createPolygonAnnotationManager
-import com.mapbox.maps.plugin.gestures.addOnMapLongClickListener
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -49,22 +46,22 @@ class IsochroneActivity : AppCompatActivity() {
             polygonAnnotationManager = mapIsochrone.annotations.createPolygonAnnotationManager()
             pointAnnotationManager = mapIsochrone.annotations.createPointAnnotationManager()
 
-            mapIsochrone.mapboxMap.apply {
-                setCamera(
-                    cameraOptions {
-                        center(DefinedLocation.UNIVERSITY_OF_TOKYO)
-                        zoom(15.0)
-                    }
-                )
-
-                addOnMapLongClickListener { point ->
-                    clearCurrentAnnotation()
-                    clearCurrentIsochrone()
-                    currentAnnotationPoint = point
-                    addPointAnnotation(point)
-                    true
-                }
-            }
+//            mapIsochrone.mapboxMap.apply {
+//                setCamera(
+//                    cameraOptions {
+//                        center(DefinedLocation.UNIVERSITY_OF_TOKYO)
+//                        zoom(15.0)
+//                    }
+//                )
+//
+//                addOnMapLongClickListener { point ->
+//                    clearCurrentAnnotation()
+//                    clearCurrentIsochrone()
+//                    currentAnnotationPoint = point
+//                    addPointAnnotation(point)
+//                    true
+//                }
+//            }
 
             spinnerProfile.apply {
                 adapter = ArrayAdapter.createFromResource(
@@ -167,17 +164,17 @@ class IsochroneActivity : AppCompatActivity() {
                         .withFillOpacity(0.2)
                 )
 
-                binding.mapIsochrone.mapboxMap.apply {
-                    cameraForCoordinates(
-                        polygon.coordinates().flatten(),
-                        cameraOptions { },
-                        null,
-                        null,
-                        null
-                    ) {
-                        flyTo(it)
-                    }
-                }
+//                binding.mapIsochrone.mapboxMap.apply {
+//                    cameraForCoordinates(
+//                        polygon.coordinates().flatten(),
+//                        cameraOptions { },
+//                        null,
+//                        null,
+//                        null
+//                    ) {
+//                        flyTo(it)
+//                    }
+//                }
             }
 
             override fun onFailure(call: Call<FeatureCollection>, t: Throwable) {

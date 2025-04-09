@@ -31,12 +31,9 @@
             android:exported="false" />
 
         <activity
-            android:name=".GeofencingActivity"
-            android:exported="false" />
-
-        <activity
             android:name=".IsochroneActivity"
             android:exported="false" />
+
     </application>
 
 </manifest>

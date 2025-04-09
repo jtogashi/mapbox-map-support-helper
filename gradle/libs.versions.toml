@@ -15,7 +15,7 @@ kotlinxCoroutine = "1.3.9"
 
 gmsLocation = "21.3.0"
 
-mapboxMaps = "11.10.0"
+mapboxMaps = "10.16.0"
 mapboxJava = "7.3.1"
 
 okHttp = "4.12.0"
