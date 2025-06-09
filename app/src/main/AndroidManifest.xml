@@ -37,6 +37,10 @@
         <activity
             android:name=".IsochroneActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".ComposeActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

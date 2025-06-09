@@ -42,6 +42,12 @@ android {
 
     buildFeatures {
         viewBinding = true
+        compose = true
+    }
+
+    composeOptions {
+        // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
+        kotlinCompilerExtensionVersion = "1.5.14"
     }
 }
 
@@ -54,6 +60,14 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.work)
 
+    val composeBom = platform("androidx.compose:compose-bom:2025.02.00")
+    implementation(composeBom)
+
+    implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+    implementation(libs.androidx.activity.compose)
+
     implementation(libs.kotlinx.coroutine)
 
     implementation(libs.gms.location)
@@ -61,6 +75,7 @@ dependencies {
     implementation(libs.mapbox.maps)
     implementation(libs.mapbox.java.turf)
     implementation(libs.mapbox.java.services)
+    implementation(libs.mapbox.extension.compose)
 
     implementation(libs.okhttp)
 

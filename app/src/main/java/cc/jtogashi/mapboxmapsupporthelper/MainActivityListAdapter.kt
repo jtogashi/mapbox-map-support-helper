@@ -1,17 +1,17 @@
 package cc.jtogashi.mapboxmapsupporthelper
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import cc.jtogashi.mapboxmapsupporthelper.databinding.ViewholderListExampleBinding
 
 class MainActivityListAdapter(
-    private val exampleList: List<Class<out AppCompatActivity>>
+    private val exampleList: List<Class<out Activity>>
 ) : RecyclerView.Adapter<MainActivityListAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int {
@@ -41,7 +41,7 @@ class MainActivityListAdapter(
     ) : RecyclerView.ViewHolder(view) {
         private var activityClass: Class<*>? = null
 
-        fun setActivityClass(activityClass: Class<out AppCompatActivity>) {
+        fun setActivityClass(activityClass: Class<out Activity>) {
             this.activityClass = activityClass
             view.findViewById<TextView>(R.id.textViewListExample).text = activityClass.simpleName
 

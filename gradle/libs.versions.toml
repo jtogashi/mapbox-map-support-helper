@@ -31,6 +31,11 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 androidx-work = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "work" }
 
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
+androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity" }
+
 kotlinx-coroutine = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutine" }
 
 gms-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "gmsLocation" }
@@ -38,6 +43,7 @@ gms-location = { group = "com.google.android.gms", name = "play-services-locatio
 mapbox-maps = { group = "com.mapbox.maps", name = "android", version.ref = "mapboxMaps" }
 mapbox-java-turf = { group = "com.mapbox.mapboxsdk", name = "mapbox-sdk-turf", version.ref = "mapboxJava" }
 mapbox-java-services = { group = "com.mapbox.mapboxsdk", name = "mapbox-sdk-services", version.ref = "mapboxJava" }
+mapbox-extension-compose = { group = "com.mapbox.extension", name = "maps-compose", version.ref = "mapboxMaps" }
 
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okHttp" }
 

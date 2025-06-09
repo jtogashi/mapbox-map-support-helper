@@ -12,7 +12,8 @@ class MainActivity : AppCompatActivity() {
     private val exampleList = listOf(
         LayerOperationsActivity::class.java,
         GeofencingActivity::class.java,
-        IsochroneActivity::class.java
+        IsochroneActivity::class.java,
+        ComposeActivity::class.java
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
