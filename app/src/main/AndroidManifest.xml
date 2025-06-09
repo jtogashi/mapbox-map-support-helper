@@ -41,6 +41,11 @@
         <activity
             android:name=".ComposeActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".CustomLayerActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

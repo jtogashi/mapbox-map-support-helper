@@ -13,7 +13,8 @@ class MainActivity : AppCompatActivity() {
         LayerOperationsActivity::class.java,
         GeofencingActivity::class.java,
         IsochroneActivity::class.java,
-        ComposeActivity::class.java
+        ComposeActivity::class.java,
+        CustomLayerActivity::class.java
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
