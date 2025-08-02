@@ -20,6 +20,8 @@ mapboxJava = "7.3.1"
 
 okHttp = "4.12.0"
 
+reqable = "1.0.0"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -46,6 +48,8 @@ mapbox-java-services = { group = "com.mapbox.mapboxsdk", name = "mapbox-sdk-serv
 mapbox-extension-compose = { group = "com.mapbox.extension", name = "maps-compose", version.ref = "mapboxMaps" }
 
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okHttp" }
+
+reqable = { group = "com.reqable.android", name = "user-certificate-trust", version.ref = "reqable" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -80,6 +80,8 @@ dependencies {
 
     implementation(libs.okhttp)
 
+    debugImplementation(libs.reqable)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
