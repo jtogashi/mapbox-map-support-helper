@@ -90,11 +90,10 @@ class LayerOperationsActivity : AppCompatActivity() {
                             )
                             iconSize(4.0)
                             iconAllowOverlap(true)
-                            iconAnchor(IconAnchor.RIGHT)
+                            iconAnchor(IconAnchor.BOTTOM)
                             iconColor(
                                 rgb(get(PROPERTY_COLOR_R), get(PROPERTY_COLOR_G), get(PROPERTY_COLOR_B))
                             )
-                            symbolAvoidEdges(true)
 
                             textField(
                                 get(PROPERTY_LABEL)
@@ -102,7 +101,7 @@ class LayerOperationsActivity : AppCompatActivity() {
                             textColor(
                                 rgb(get(PROPERTY_COLOR_R), get(PROPERTY_COLOR_G), get(PROPERTY_COLOR_B))
                             )
-                            textAnchor(TextAnchor.LEFT)
+                            textAnchor(TextAnchor.TOP)
                             textAllowOverlap(false)
                             textOptional(true)
                         }
