@@ -40,6 +40,22 @@ android {
         jvmTarget = "11"
     }
 
+    splits {
+        abi {
+            isEnable = true
+
+            // By default all ABIs are included, so use reset() and include to specify that you only
+            // want APKs for x86 and x86_64.
+            // Resets the list of ABIs for Gradle to create APKs for to none.
+            reset()
+            //noinspection ChromeOsAbiSupport
+            include("arm64-v8a")
+
+            // Specifies that you don't want to also generate a universal APK that includes all ABIs.
+            isUniversalApk = false
+        }
+    }
+
     buildFeatures {
         buildConfig = true
         viewBinding = true
