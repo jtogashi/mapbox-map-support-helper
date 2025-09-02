@@ -47,6 +47,10 @@
             android:name=".CustomLayerActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".OfflineComposeActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

@@ -14,7 +14,8 @@ class MainActivity : AppCompatActivity() {
         GeofencingActivity::class.java,
         IsochroneActivity::class.java,
         ComposeActivity::class.java,
-        CustomLayerActivity::class.java
+        CustomLayerActivity::class.java,
+        OfflineComposeActivity::class.java
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
