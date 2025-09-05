@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -32,6 +33,7 @@ import com.mapbox.maps.OfflineManager
 import com.mapbox.maps.Style
 import com.mapbox.maps.StylePackLoadOptions
 import com.mapbox.maps.TilesetDescriptorOptions
+import com.mapbox.maps.debugoptions.MapViewDebugOptions
 import com.mapbox.maps.dsl.cameraOptions
 import com.mapbox.maps.extension.compose.MapEffect
 import com.mapbox.maps.extension.compose.MapboxMap
@@ -56,19 +58,26 @@ class OfflineComposeActivity : ComponentActivity() {
 
         setContent {
             val offlineMapState by offlineMapStateFlow.collectAsState()
+            val viewportState = rememberMapViewportState {
+                setCameraOptions {
+                    zoom(18.0)
+                    center(Point.fromLngLat(0.0, 0.0))
+                }
+            }
 
             MapboxMap(
                 Modifier.windowInsetsPadding(WindowInsets.systemBars),
-                mapViewportState = rememberMapViewportState {
-                    setCameraOptions {
-                        zoom(22.0)
-                        center(Point.fromLngLat(0.0, 0.0))
-                    }
-                },
+                mapViewportState = viewportState,
                 style = {
                     MapStyle(style = Style.SATELLITE)
                 }
             ) {
+                MapEffect { mapView ->
+                    mapView.debugOptions = setOf(
+                        MapViewDebugOptions.TILE_BORDERS
+                    )
+                }
+
                 MapEffect { mapView ->
                     offlineMapStateFlow.collect { state ->
                         when (state) {
@@ -113,6 +122,13 @@ class OfflineComposeActivity : ComponentActivity() {
                 horizontalAlignment = Alignment.End,
                 verticalArrangement = Arrangement.Bottom,
             ) {
+                Text(
+                    modifier = Modifier
+                        .background(Color.White)
+                        .padding(10.dp),
+                    text = "zoom: ${viewportState.cameraState?.zoom}",
+                )
+
                 Button(
                     enabled = offlineMapState == OfflineMapState.NOT_LOADED,
                     onClick = {
