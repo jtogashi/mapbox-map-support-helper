@@ -51,6 +51,9 @@
             android:name=".OfflineComposeActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".JapanWeatherComposeActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
