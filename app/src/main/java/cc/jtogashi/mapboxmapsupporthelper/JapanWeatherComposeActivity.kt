@@ -19,8 +19,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.lifecycleScope
 import com.mapbox.geojson.Point
 import com.mapbox.maps.MapboxExperimental
+import com.mapbox.maps.RenderedRasterQueryOptions
 import com.mapbox.maps.SourceDataLoadedType
 import com.mapbox.maps.coroutine.sourceDataLoadedEvents
 import com.mapbox.maps.extension.compose.MapEffect
@@ -42,6 +44,7 @@ import com.mapbox.maps.extension.compose.style.standard.StandardStyleState
 import com.mapbox.maps.extension.style.expressions.dsl.generated.interpolate
 import com.mapbox.maps.extension.style.sources.generated.RasterArraySource
 import com.mapbox.maps.extension.style.sources.getSourceAs
+import kotlinx.coroutines.launch
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -104,6 +107,24 @@ class JapanWeatherComposeActivity : ComponentActivity() {
                                             show3dTrees = BooleanValue(false)
                                             show3dLandmarks = BooleanValue(false)
                                             showLandmarkIconLabels = BooleanValue(false)
+                                        }
+
+                                        interactionsState.onMapClicked { interactionContext ->
+                                            lifecycleScope.launch {
+                                                val result = mapState.queryRenderedRasterValues(
+                                                    interactionContext.screenCoordinate,
+                                                    RenderedRasterQueryOptions.Builder()
+                                                        .layers(listOf(LAYER_ID_TEMP_0_39))
+                                                        .build()
+                                                )
+
+                                                result.value?.let { rasterValue ->
+                                                    val values =
+                                                        rasterValue.layers[LAYER_ID_TEMP_0_39]
+                                                    // TODO: ViewAnnotation with raster value
+                                                }
+                                            }
+                                            true
                                         }
 
                                     }
