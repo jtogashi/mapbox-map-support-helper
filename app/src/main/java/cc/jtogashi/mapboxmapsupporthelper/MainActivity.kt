@@ -16,7 +16,8 @@ class MainActivity : AppCompatActivity() {
         ComposeActivity::class.java,
         CustomLayerActivity::class.java,
         OfflineComposeActivity::class.java,
-        JapanWeatherComposeActivity::class.java
+        JapanWeatherComposeActivity::class.java,
+        FeatureStateComposeActivity::class.java
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

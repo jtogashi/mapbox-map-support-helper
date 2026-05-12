@@ -54,6 +54,10 @@
         <activity
             android:name=".JapanWeatherComposeActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".FeatureStateComposeActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
