@@ -14,6 +14,7 @@ work = "2.9.1"
 desugaringJdk = "2.1.5"
 
 kotlinxCoroutine = "1.3.9"
+kotlinxSerialization = "1.6.3"
 
 gmsLocation = "21.3.0"
 
@@ -43,6 +44,7 @@ androidx-compose-material3 = { group = "androidx.compose.material3", name = "mat
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity" }
 
 kotlinx-coroutine = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutine" }
+kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 
 gms-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "gmsLocation" }
 
@@ -58,4 +60,4 @@ reqable = { group = "com.reqable.android", name = "user-certificate-trust", vers
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

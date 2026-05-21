@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -89,6 +90,7 @@ dependencies {
     coreLibraryDesugaring(libs.android.desugaring.jdk)
 
     implementation(libs.kotlinx.coroutine)
+    implementation(libs.kotlinx.serialization)
 
     implementation(libs.gms.location)
 
